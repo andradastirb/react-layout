@@ -1,3 +1,12 @@
+import { useContext } from "react";
+import { AppContext } from "../App";
+
 export function Contact() {
-  return <h2>Contact</h2>;
+  const { userName: name } = useContext(AppContext);
+  return (
+    <>
+      <h2>Contact</h2>
+      <div>{name}</div>
+    </>
+  );
 }

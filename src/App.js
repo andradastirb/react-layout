@@ -9,12 +9,17 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { Template } from "./template/Template";
+import { createContext, useState } from "react";
+
+export const AppContext = createContext();
 
 function App() {
+  const [userName, setUserName] = useState("Reddd");
+
   const myRouter = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Template />}>
-        <Route path="/home" element={<Home />} />
+        <Route index element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<h3>This page is not available!</h3>} />
@@ -25,7 +30,9 @@ function App() {
   return (
     <div className="App">
       {/* <p>Hello</p> */}
-      <RouterProvider router={myRouter} />
+      <AppContext.Provider value={{ userName, setUserName }}>
+        <RouterProvider router={myRouter} />
+      </AppContext.Provider>
     </div>
   );
 }

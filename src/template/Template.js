@@ -1,3 +1,14 @@
+import { Outlet } from "react-router-dom";
+import { Navbar } from "./Navbar";
+
 export function Template() {
-    return <h2>Template</h2>;
-  }
+  return (
+    <div>
+      <Navbar />
+      <div>
+        <Outlet />
+      </div>
+      <p>Footer</p>
+    </div>
+  );
+}
